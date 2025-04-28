@@ -1,10 +1,12 @@
-const express = require('express');
-
+require('./db/mongo.js');
 const todorouter = require('./routes/todo.js');
+const bp = require('body-parser');
+
+const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use(express.json());
+app.use(bp.urlencoded());
 app.use('/todo',todorouter);
 
 app.listen(port, ()=>{
